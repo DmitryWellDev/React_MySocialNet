@@ -1,0 +1,24 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 7fr 2fr 1fr;
+
+    font-weight: bold;
+}
+
+.dialog {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+.dialog:hover{
+    color: darkred;
+}
+
+.dialog.active {
+    color: cornflowerblue;
+}
+
+.dialog.active:hover {
+    color: darkred;
+}
+

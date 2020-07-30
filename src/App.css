@@ -1,0 +1,29 @@
+body {
+  background-color: azure;
+}
+
+.App-wrapper {
+  width: 1440px;
+  margin: 0 auto;
+  display: grid;
+
+  grid-template-areas:"h h"
+                      "n c";
+
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 3fr 9fr;
+  grid-gap: 10px;
+}
+
+.App-wrapper-content {
+  grid-area: c;
+  background-color: coral;
+  color: antiquewhite;
+  padding: 10px;
+}
+
+
+
+
+
+

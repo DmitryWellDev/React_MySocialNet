@@ -1,0 +1,24 @@
+.dialog {
+    text-decoration: none;
+    color: darkslategray;
+}
+
+.dialog:hover{
+    color: cyan;
+}
+
+.dialog:active {
+    color: cornflowerblue;
+}
+
+.itemImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.itemTitle {
+    margin-left: 10px;
+    vertical-align:middle;
+    padding-bottom: 40px;
+}

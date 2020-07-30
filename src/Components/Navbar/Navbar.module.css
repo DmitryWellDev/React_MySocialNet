@@ -1,0 +1,48 @@
+.nav {
+  grid-area: n;
+  background-color: cadetblue;
+  color: aliceblue;
+}
+
+.nav a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.nav a:hover {
+  color: crimson;
+}
+
+.item a.active {
+  color: brown;
+}
+
+.friendsList {
+  display: flex;
+  justify-content: space-around;
+  list-style:none;
+}
+
+.friendsItem {
+  position: relative;
+  margin-top: 5px;
+}
+
+.friendsItem:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: yellow;
+  border-radius: 50%;
+  position: absolute;
+  left: 17px;
+  bottom: 21px;
+}
+
+.friendsTitle {
+  text-align: center;
+  font-size: 24px;
+}
+
+
+
