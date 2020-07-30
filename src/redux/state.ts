@@ -35,6 +35,7 @@ export type profilePageType = {
 export type dialogsPageType = {
     dialogs: Array<DialogType>
         messages: Array<MessageType>
+    newMessageText: string
     uncheckedDialogs: Array<UncheckedDialogType>
     uncheckedMessages: Array<UncheckedMessageType>
 }
@@ -50,9 +51,9 @@ export type RootStateType = {
     sitebar: Array<SitebarElementType>
 }
 
-type subscribeType = {
-    subscribe:() => void
-}
+// type subscribeType = {
+//     subscribe:() => void
+// }
 
 let RerenderEntireTree = (state: RootStateType) => {
     console.log('Hello');
@@ -81,6 +82,7 @@ let RerenderEntireTree = (state: RootStateType) => {
             {id: 2, message: "Buhai!"},
             {id: 3, message: "Otdihai!"}
         ],
+        newMessageText: "React way of SAMURAI",
         uncheckedMessages: [
             {id: 1, message: "Yo!"},
             {id: 2, message: "Ege-ge!"},
@@ -114,8 +116,23 @@ export let addPost = () => {
     RerenderEntireTree(state)
 }
 
+export let addMessage = (w: string) => {
+    let newMessage: MessageType = {
+        id: 4,
+        message: w
+    }
+    state.dialogsPage.messages.push(newMessage)
+    state.dialogsPage.newMessageText = ''
+    RerenderEntireTree(state)
+}
+
 export let updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
+    RerenderEntireTree(state)
+}
+
+export let updateNewMessageText = (newText: string) => {
+    state.dialogsPage.newMessageText = newText
     RerenderEntireTree(state)
 }
 

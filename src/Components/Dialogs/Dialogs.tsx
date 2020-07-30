@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import styles from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
@@ -6,14 +6,29 @@ import {dialogsPageType} from "../../redux/state";
 
 type DPropsType = {
     dialogsPage: dialogsPageType
+    addMessage: (w: string) => void
+    updateNewMessageText: (newText: string) => void
+    newPostMessageText: string
 }
 
 const   Dialogs = (props: DPropsType) => {
 
-    let addMessageElement = React.createRef<HTMLTextAreaElement> ()
+    //let addMessageElement = React.createRef<HTMLTextAreaElement> ()
+
+    // let addMessage = () => {
+    //     //props.addMessage(addMessageElement.current && addMessageElement.current.value)
+    //     //alert(addMessageElement.current && addMessageElement.current.value)
+    // }
 
     let addMessage = () => {
-        addMessageElement.current && addMessageElement.current.value
+        props.addMessage(props.dialogsPage.newMessageText)
+    }
+
+    let onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+
+            props.updateNewMessageText( e.currentTarget.value)
+
+
     }
 
     let  DialogsDataElement = props.dialogsPage.dialogs.map(dialog => <DialogItem photo={dialog.photo} name={dialog.name} id={dialog.id}/>)
@@ -38,7 +53,9 @@ const   Dialogs = (props: DPropsType) => {
                 {UncheckedMessagesDataElement}
             </div>
             <div>
-                <textarea ref={addMessageElement}/>
+                <textarea
+                          value={props.dialogsPage.newMessageText}
+                onChange={onMessageChange}/>
                 <button onClick={addMessage}>Add Post</button>
             </div>
         </div>

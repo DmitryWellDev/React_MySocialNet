@@ -1,5 +1,5 @@
 import './index.css';
-import state, {RootStateType, subscribe} from './redux/state'
+import state, {addMessage, RootStateType, subscribe, updateNewMessageText} from './redux/state'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -16,7 +16,10 @@ export type RerenderEntireTreeType = (state: RootStateType) => void
         <BrowserRouter>
             <App state={state}
                  addPost={addPost}
-                 updateNewPostText={updateNewPostText}/>
+                 updateNewPostText={updateNewPostText}
+                 addMessage={addMessage}
+                 updateNewMessageText={updateNewMessageText}
+            />
         </BrowserRouter>, document.getElementById('root'));
 
 }
