@@ -1,22 +1,21 @@
-
 type MessageType = {
     id: number
-    message:string
+    message: string
 }
 
 type UncheckedMessageType = {
     id: number
-    message:string
+    message: string
 }
 
 type DialogType = {
-    id:number
+    id: number
     name: string
     photo: string
 }
 
 type UncheckedDialogType = {
-    id:number
+    id: number
     name: string
     photo: string
 }
@@ -34,7 +33,7 @@ export type profilePageType = {
 
 export type dialogsPageType = {
     dialogs: Array<DialogType>
-        messages: Array<MessageType>
+    messages: Array<MessageType>
     newMessageText: string
     uncheckedDialogs: Array<UncheckedDialogType>
     uncheckedMessages: Array<UncheckedMessageType>
@@ -42,7 +41,7 @@ export type dialogsPageType = {
 
 export type SitebarElementType = {
     id: number
-    name:string
+    name: string
 }
 
 export type RootStateType = {
@@ -51,93 +50,125 @@ export type RootStateType = {
     sitebar: Array<SitebarElementType>
 }
 
-// type subscribeType = {
-//     subscribe:() => void
-// }
+ export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType | AddMessageActionType | UpdateNewMessageTextActionType
 
-let RerenderEntireTree = (state: RootStateType) => {
-    console.log('Hello');
+type AddPostActionType = {
+    type: 'ADD-POST'
+    newPost?: string
 }
 
- let state: RootStateType = {
-    dialogsPage: {
-        dialogs: [
-            {id: 1, name: "Skril", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512888_2.jpg"},
-            {id: 2, name: "Banan", photo: "https://klike.net/uploads/posts/2019-03/1551512876_4.jpg"},
-            {id: 3, name: "Ej", photo: "https://klike.net/uploads/posts/2019-03/medium/1551515289_11.jpg"},
-            {id: 4, name: "Zviazko", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512890_12.jpg"},
-            {id: 5, name: "Yus", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512905_15.jpg"
-            },
-        ],
-        uncheckedDialogs: [
-            {id: 1, name: "Sasha", photo: "https://klike.net/uploads/posts/2019-03/1551512897_16.jpg"},
-            {id: 2, name: "Masha", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512911_25.jpg"},
-            {id: 3, name: "Vlad", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512926_36.jpg"},
-            {id: 4, name: "Miha",  photo: "https://klike.net/uploads/posts/2019-03/1551512878_44.jpg"},
-            {id: 5, name: "Chort", photo: "https://klike.net/uploads/posts/2019-03/1551512969_49.jpg"
-            },
-        ],
-        messages: [
-            {id: 1, message: "Hi!"},
-            {id: 2, message: "Buhai!"},
-            {id: 3, message: "Otdihai!"}
-        ],
-        newMessageText: "React way of SAMURAI",
-        uncheckedMessages: [
-            {id: 1, message: "Yo!"},
-            {id: 2, message: "Ege-ge!"},
-            {id: 3, message: "Hello!"}
+type UpdateNewPostTextActionType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
+}
+
+type AddMessageActionType = {
+    type: 'ADD-MESSAGE'
+    w: string
+}
+
+type UpdateNewMessageTextActionType = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT'
+    newText: string
+}
+
+export type StoreType = {
+    _state: RootStateType
+    getState: () => RootStateType
+    dispatch: (action: ActionsTypes) => void
+    _callSubscriber: () => void
+    subscribe: (callback: () => void) => void
+}
+
+//=======================================
+
+export let store: StoreType = {
+    _state: {
+        dialogsPage: {
+            dialogs: [
+                {id: 1, name: "Skril", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512888_2.jpg"},
+                {id: 2, name: "Banan", photo: "https://klike.net/uploads/posts/2019-03/1551512876_4.jpg"},
+                {id: 3, name: "Ej", photo: "https://klike.net/uploads/posts/2019-03/medium/1551515289_11.jpg"},
+                {id: 4, name: "Zviazko", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512890_12.jpg"},
+                {
+                    id: 5, name: "Yus", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512905_15.jpg"
+                },
+            ],
+            uncheckedDialogs: [
+                {id: 1, name: "Sasha", photo: "https://klike.net/uploads/posts/2019-03/1551512897_16.jpg"},
+                {id: 2, name: "Masha", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512911_25.jpg"},
+                {id: 3, name: "Vlad", photo: "https://klike.net/uploads/posts/2019-03/medium/1551512926_36.jpg"},
+                {id: 4, name: "Miha", photo: "https://klike.net/uploads/posts/2019-03/1551512878_44.jpg"},
+                {
+                    id: 5, name: "Chort", photo: "https://klike.net/uploads/posts/2019-03/1551512969_49.jpg"
+                },
+            ],
+            messages: [
+                {id: 1, message: "Hi!"},
+                {id: 2, message: "Buhai!"},
+                {id: 3, message: "Otdihai!"}
+            ],
+            newMessageText: "React way of SAMURAI",
+            uncheckedMessages: [
+                {id: 1, message: "Yo!"},
+                {id: 2, message: "Ege-ge!"},
+                {id: 3, message: "Hello!"}
+            ]
+        },
+        profilePage: {
+            posts: [
+                {id: 1, message: "hi", likes: 15},
+                {id: 2, message: "Hello!", likes: 20},
+                {id: 3, message: "Harry Crishna!", likes: 25}
+            ],
+            newPostText: 'React way of SAMURAI'
+        },
+        sitebar: [
+            {id: 1, name: 'Masha'},
+            {id: 2, name: 'Glasha'},
+            {id: 3, name: 'Natasha'},
         ]
     },
-    profilePage: {
-        posts: [
-            {id: 1, message: "hi", likes: 15},
-            {id: 2, message: "Hello!", likes: 20},
-            {id: 3, message: "Harry Crishna!", likes: 25}
-        ],
-        newPostText: 'React way of SAMURAI'
+
+    getState() {
+        return this._state
     },
-    sitebar: [
-        {id: 1, name: 'Masha'},
-        {id: 2, name: 'Glasha'},
-        {id: 3, name: 'Natasha'},
-    ]
 
-}
+    dispatch(action: ActionsTypes) {
+        if (action.type === 'ADD-POST') {
+            let newPost: PostType = {
+                id: 4,
+                message: this._state.profilePage.newPostText,
+                likes: 12
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber()
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            this._callSubscriber()
+        }else if (action.type === 'ADD-MESSAGE') {
+            let newMessage: MessageType = {
+                id: 4,
+                message: action.w
+            }
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = ''
+            this._callSubscriber()
+        }else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newText
+            this._callSubscriber()
+        }
+    },
 
-export let addPost = () => {
-    let newPost: PostType = {
-        id: 4,
-        message: state.profilePage.newPostText,
-        likes: 12
+//--------------------------------------
+
+    _callSubscriber() {
+        console.log('Hello');
+    },
+
+    subscribe(callback:any) {
+        this._callSubscriber = callback
     }
-    state.profilePage.posts.push(newPost)
-    state.profilePage.newPostText = ''
-    RerenderEntireTree(state)
 }
 
-export let addMessage = (w: string) => {
-    let newMessage: MessageType = {
-        id: 4,
-        message: w
-    }
-    state.dialogsPage.messages.push(newMessage)
-    state.dialogsPage.newMessageText = ''
-    RerenderEntireTree(state)
-}
-
-export let updateNewPostText = (newText: string) => {
-    state.profilePage.newPostText = newText
-    RerenderEntireTree(state)
-}
-
-export let updateNewMessageText = (newText: string) => {
-    state.dialogsPage.newMessageText = newText
-    RerenderEntireTree(state)
-}
-
-export const subscribe = (observer:any) => {
-RerenderEntireTree = observer
-}
-
-export default state

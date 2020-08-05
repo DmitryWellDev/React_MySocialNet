@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
-import {SitebarElementType} from "../../redux/state";
+import {SitebarElementType, StoreType} from "../../redux/state";
 
 type SitebarTypes = {
     sitebar: Array<SitebarElementType>
+
 }
 
 
