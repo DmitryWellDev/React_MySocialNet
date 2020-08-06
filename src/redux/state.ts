@@ -50,27 +50,7 @@ export type RootStateType = {
     sitebar: Array<SitebarElementType>
 }
 
- export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType | AddMessageActionType | UpdateNewMessageTextActionType
-
-type AddPostActionType = {
-    type: 'ADD-POST'
-    newPost?: string
-}
-
-type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
-}
-
-type AddMessageActionType = {
-    type: 'ADD-MESSAGE'
-    w: string
-}
-
-type UpdateNewMessageTextActionType = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT'
-    newText: string
-}
+ export type ActionsTypes = ReturnType<typeof AddPostActionCreator> | ReturnType<typeof UpdateNewPostTextActionCreator> | ReturnType<typeof AddMessageActionCreator> | ReturnType<typeof UpdateNewMessageTextActionCreator>
 
 export type StoreType = {
     _state: RootStateType
@@ -79,6 +59,13 @@ export type StoreType = {
     _callSubscriber: () => void
     subscribe: (callback: () => void) => void
 }
+
+//=======================================
+
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 //=======================================
 
@@ -161,7 +148,7 @@ export let store: StoreType = {
         }
     },
 
-//--------------------------------------
+//---------
 
     _callSubscriber() {
         console.log('Hello');
@@ -170,5 +157,35 @@ export let store: StoreType = {
     subscribe(callback:any) {
         this._callSubscriber = callback
     }
+}
+
+//=========================================
+
+export const AddPostActionCreator = (text: string) => {
+    return {
+        type: ADD_POST,
+        newPost: text
+    } as const
+}
+
+export const UpdateNewPostTextActionCreator = (text: string) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: text
+    } as const
+}
+
+export const AddMessageActionCreator = (text: string) => {
+    return {
+        type: ADD_MESSAGE,
+        w: text
+    } as const
+}
+
+export const UpdateNewMessageTextActionCreator = (text: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        newText: text
+    } as const
 }
 
