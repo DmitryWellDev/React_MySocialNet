@@ -1,4 +1,8 @@
-type MessageType = {
+import ProfileReducer, {AddPostActionCreator, UpdateNewPostTextActionCreator} from "./Profile-Reducer";
+import DialogsReducer, {AddMessageActionCreator, UpdateNewMessageTextActionCreator} from "./Dialogs-Reducer";
+import SitebarReducer from "./Sitebar-Reducer";
+
+export type MessageType = {
     id: number
     message: string
 }
@@ -57,6 +61,12 @@ export type StoreType = {
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
     _callSubscriber: () => void
+    subscribe: (callback: () => void) => void
+}
+
+export type ReduxStoreType = {
+    getState: () => RootStateType
+    dispatch: (action: ActionsTypes) => void
     subscribe: (callback: () => void) => void
 }
 
@@ -122,30 +132,12 @@ export let store: StoreType = {
     },
 
     dispatch(action: ActionsTypes) {
-        if (action.type === ADD_POST) {
-            let newPost: PostType = {
-                id: 4,
-                message: this._state.profilePage.newPostText,
-                likes: 12
-            }
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber()
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscriber()
-        }else if (action.type === ADD_MESSAGE) {
-            let newMessage: MessageType = {
-                id: 4,
-                message: action.w
-            }
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
-            this._callSubscriber()
-        }else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.newText
-            this._callSubscriber()
-        }
+
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
+        this._state.sitebar = SitebarReducer(this._state.sitebar, action)
+
+        this._callSubscriber()
     },
 
 //---------
@@ -161,31 +153,7 @@ export let store: StoreType = {
 
 //=========================================
 
-export const AddPostActionCreator = (text: string) => {
-    return {
-        type: ADD_POST,
-        newPost: text
-    } as const
-}
 
-export const UpdateNewPostTextActionCreator = (text: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    } as const
-}
 
-export const AddMessageActionCreator = (text: string) => {
-    return {
-        type: ADD_MESSAGE,
-        w: text
-    } as const
-}
 
-export const UpdateNewMessageTextActionCreator = (text: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newText: text
-    } as const
-}
 
