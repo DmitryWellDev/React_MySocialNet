@@ -2,19 +2,19 @@ import React, {ChangeEvent} from 'react';
 import styles from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {RootStateType} from "../../redux/store";
+import {dialogsPageType, RootStateType} from "../../redux/store";
 
 type DPropsType = {
-    addMessage: () => void
+    addMessage: (text: string) => void
     onMessageChange: (newText: string) => void
-    state: RootStateType
+    dialogsPage: dialogsPageType
 }
 
 
 const Dialogs = (props: DPropsType) => {
 
     let addMessage = () => {
-        props.addMessage()
+        props.addMessage(props.dialogsPage.newMessageText)
         //props.dispatch(AddMessageActionCreator(props.dialogsPage.newMessageText))
     }
 
@@ -23,17 +23,17 @@ const Dialogs = (props: DPropsType) => {
         //props.dispatch(UpdateNewMessageTextActionCreator(e.currentTarget.value))
     }
 
-    let DialogsDataElement = props.state.dialogsPage.dialogs.map(dialog => <DialogItem photo={dialog.photo}
+    let DialogsDataElement = props.dialogsPage.dialogs.map(dialog => <DialogItem photo={dialog.photo}
                                                                                        name={dialog.name}
                                                                                        id={dialog.id}/>)
 
-    let MessagesDataElement = props.state.dialogsPage.messages.map(message => <Message id={message.id}
+    let MessagesDataElement = props.dialogsPage.messages.map(message => <Message id={message.id}
                                                                                        message={message.message}/>)
 
-    let UncheckedDialogsDataElement = props.state.dialogsPage.uncheckedDialogs.map(dialog => <DialogItem
+    let UncheckedDialogsDataElement = props.dialogsPage.uncheckedDialogs.map(dialog => <DialogItem
         photo={dialog.photo} name={dialog.name} id={dialog.id}/>)
 
-    let UncheckedMessagesDataElement = props.state.dialogsPage.uncheckedMessages.map(message => <Message id={message.id}
+    let UncheckedMessagesDataElement = props.dialogsPage.uncheckedMessages.map(message => <Message id={message.id}
                                                                                                          message={message.message}/>)
     return (
         <div className={styles.dialogs}>
@@ -51,7 +51,7 @@ const Dialogs = (props: DPropsType) => {
             </div>
             <div>
                 <textarea
-                    value={props.state.dialogsPage.newMessageText}
+                    value={props.dialogsPage.newMessageText}
                     onChange={onMessageChange}/>
                 <button onClick={addMessage}>Add Post</button>
             </div>

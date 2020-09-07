@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './Navbar.module.css';
 import {NavLink} from 'react-router-dom';
-import {RootStateType} from "../../redux/store";
+import {RootStateType, SitebarElementType} from "../../redux/store";
 
 type SitebarTypes = {
-    state: RootStateType
+    sitebar: Array<SitebarElementType>
 }
 
 function Navbar(props: SitebarTypes) {
-    let sitebarElement = props.state.sitebar.map(elem => <li className={styles.friendsItem}
+    let sitebarElement = props.sitebar.map(elem => <li className={styles.friendsItem}
                                                              id={elem.name}>{elem.name}</li>)
 
     return (<div className={styles.nav}>

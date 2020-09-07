@@ -12,8 +12,8 @@ import NavbarContainer from "./Components/Navbar/NavbarContainer";
 
 
 type PropsType = {
-    store: ReduxStoreType
-    dispatch: (action: ActionsTypes) => void
+    // store: ReduxStoreType
+    // dispatch: (action: ActionsTypes) => void
 }
 
 const App: FC<PropsType> = (props) => {
@@ -21,10 +21,10 @@ const App: FC<PropsType> = (props) => {
     return (
         <div className="App-wrapper">
             <Header/>
-            <NavbarContainer store={props.store}/>
+            <NavbarContainer/>
             <div className='App-wrapper-content'>
-                <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/>}/>
-                <Route path='/profile' render={() => <Profile store={props.store}/>}/>
+                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                <Route path='/profile' render={() => <Profile/>}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>

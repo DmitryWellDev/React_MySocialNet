@@ -38,10 +38,10 @@ export const AddPostActionCreator = (text: string) => {
     } as const
 }
 
-export const UpdateNewPostTextActionCreator = (text: string) => {
+export const UpdateNewPostTextActionCreator = (newText: string) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
-        newText: text
+        newText: newText
     } as const
 }
 

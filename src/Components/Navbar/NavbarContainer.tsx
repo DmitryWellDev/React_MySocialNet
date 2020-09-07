@@ -1,20 +1,36 @@
 import React from 'react';
-import {ReduxStoreType} from "../../redux/store";
+import {ReduxStoreType, RootStateType} from "../../redux/store";
 import Navbar from "./Navbar";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {AddPostActionCreator, UpdateNewPostTextActionCreator} from "../../redux/Profile-Reducer";
 
-type SitebarContainerTypes = {
-    store: ReduxStoreType
+// type SitebarContainerTypes = {
+//     store: ReduxStoreType
+// }
+
+// function NavbarContainer(props: SitebarContainerTypes) {
+//
+//     let state = props.store.getState()
+//
+//     return (<div>
+//             <Navbar state={state}/>
+//         </div>
+//     );
+// }
+
+let mapStateToProps = (state: RootStateType) => {
+    return {
+        sitebar: state.sitebar
+    }
 }
 
-function NavbarContainer(props: SitebarContainerTypes) {
+let mapDispatchToProps = (dispatch:Dispatch) => {
+    return {
 
-    let state = props.store.getState()
+        }
+    }
 
-    return (<div>
-            <Navbar state={state}/>
-        </div>
-    );
-}
-
+const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar)
 
 export default NavbarContainer;

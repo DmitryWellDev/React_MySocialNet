@@ -3,15 +3,13 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {ReduxStoreType} from "../../redux/store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-type ProfilePropsType = {
-    store: ReduxStoreType
-}
 
-function Profile(props: ProfilePropsType) {
+
+function Profile() {
     return (
         <div>
             <ProfileInfo/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer/>
         </div>
     );
 }
