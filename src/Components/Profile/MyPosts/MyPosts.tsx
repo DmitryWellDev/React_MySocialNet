@@ -8,6 +8,7 @@ type MyPostsPropsType = {
     addPost: (text: string) => void
     updateNewPostText: (newText: string) => void
     profilePage: profilePageType
+    newPostText: string
 }
 
 
@@ -15,14 +16,12 @@ function MyPosts(props: MyPostsPropsType) {
 
     let addPost = () => {
         props.addPost(props.profilePage.newPostText)
-        //props.dispatch(AddPostActionCreator(props.profilePage.newPostText))
     }
 
     let postDataElement = props.profilePage.posts.map(post => <Post message={post.message} likes={post.likes}/>)
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.updateNewPostText(e.currentTarget.value)
-        //props.dispatch(UpdateNewPostTextActionCreator(e.currentTarget.value))
     }
 
     return (
