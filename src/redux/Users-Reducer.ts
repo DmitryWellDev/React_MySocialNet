@@ -1,33 +1,35 @@
-import React from 'react'
-import {UserType} from "../../redux/Users-Reducer";
-import styles from './Users.module.css'
-import   axios from 'axios'
-import userImage from '../../assets/images/photo.jpg'
+import {ActionsTypes} from "./store";
 
+const FOLLOW = 'FOLLOW'
+const UNFOLLOW = 'UNFOLLOW'
+const SET_USERS = 'SET-USERS'
 
-type UsersPropsType = {
+export type StateType = {
     users: Array<UserType>
-    Follow: (userId: number) => void
-    Unfollow: (userId: number) => void
-    SetUsers: (users: Array<UserType>) => void
+}
+
+export type UserType = {
+    followed: boolean
+    id: number
+    name: string
+    location: UserLocationType
+    status: string
+    photos: userPhotoType
+}
+
+type userPhotoType = {
+    small: string | undefined
+    large: string | undefined
+}
+
+type UserLocationType = {
+    country: string
+    city: string
 }
 
 
-
-const Users = (props: UsersPropsType) => {
-
-    const getUsers = () => {
-        if (props.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users")
-                .then((response: any) => {
-                    props.SetUsers(response.data.items)
-                })
-        }
-    }
-
-
-
-    //props.SetUsers([
+let initialState = {
+    users: [
         // {
         //     followed: true,
         //     personPhoto: 'data:image/jpeg;base64,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',
@@ -52,32 +54,48 @@ const Users = (props: UsersPropsType) => {
         //     status: 'Dont you sleep? ',
         //     location: {country: 'Poland', city: 'Krakov'}
         // },
-    //])
-
-    return (
-        <div>
-            <button onClick={getUsers}>Get users</button>
-            {
-                props.users.map((u) => <div key={u.id}>
-                    <div className={styles.main_wrap}>
-                        <div>
-                            <img className={styles.item_image} src={u.photos.small != null ?  u.photos.small : userImage}/>
-
-                            {u.followed
-                                ? <button onClick={() => {props.Unfollow(u.id)}}>unfollow</button>
-                                : <button onClick={() => {props.Follow(u.id)}}>follow</button>}
-                        </div>
-                        <div className={styles.dataList}>
-                            <div className={`${styles.dataItem} ${styles.dataItem_name}`}>{u.name}</div>
-                            <div className={styles.dataItem}>{"u.location.country"}</div>
-                            <div className={styles.dataItem}>{u.status}</div>
-                            <div className={styles.dataItem}>{"u.location.city"}</div>
-                        </div>
-                    </div>
-                </div>)
-            }
-        </div>
-    )
+    ]
 }
 
-export default Users
+const UsersReducer = (state: StateType = initialState, action: ActionsTypes): StateType => {
+    switch (action.type) {
+        case "FOLLOW":
+            return {
+                ...state,
+                users: state.users.map((u) => {
+                    if (u.id === action.userId) {
+                        return {...u, followed: true}
+                    }
+                    return {...u}
+                })
+            }
+        case 'UNFOLLOW':
+            return {
+                ...state,
+                users: state.users.map((u) => {
+                    if (u.id === action.userId) {
+                        return {...u, followed: false}
+                    }
+                    return {...u}
+                })
+            }
+        case 'SET-USERS':
+            return {
+                ...state, users: [...state.users, ...action.users]
+            }
+        default:
+            return state
+    }
+}
+
+export const FollowAC = (userId: number) => {
+    return {type: FOLLOW, userId, followed:true} as const
+}
+export const UnfollowAC = (userId: number) => {
+    return {type: UNFOLLOW, userId, followed:false} as const
+}
+export const SetUsersAC = (users: Array<UserType>) => {
+    return {type: SET_USERS, users} as const
+}
+
+export default UsersReducer

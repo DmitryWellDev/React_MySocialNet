@@ -6,9 +6,9 @@ import {Route} from 'react-router-dom';
 import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Settings from "./Components/Settings/Settings";
-import {ActionsTypes, ReduxStoreType} from "./redux/store";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import NavbarContainer from "./Components/Navbar/NavbarContainer";
+import UsersContainer from "./Components/Users/UsersContainer";
 
 
 type PropsType = {
@@ -28,6 +28,7 @@ const App: FC<PropsType> = (props) => {
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
+                <Route path='/users' render={() => <UsersContainer/>}/>
             </div>
         </div>
     );

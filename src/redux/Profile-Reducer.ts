@@ -12,19 +12,20 @@ let initialState = {
     newPostText: 'React way of SAMURAI'
 }
 
-const ProfileReducer = (state: profilePageType = initialState, action: ActionsTypes) => {
+const ProfileReducer = (state: profilePageType = initialState, action: ActionsTypes): profilePageType => {
     switch (action.type) {
         case "ADD-POST":
             return {
-            ...state,
+                ...state,
                 posts: [...state.posts, {id: 4, message: state.newPostText, likes: 12}],
                 newPostText: ''
-        }
+            }
+
         case "UPDATE-NEW-POST-TEXT":
             return {
                 ...state,
                 newPostText: action.newText
-        }
+            }
         default:
             return state
     }

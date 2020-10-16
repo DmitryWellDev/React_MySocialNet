@@ -1,0 +1,31 @@
+.item_image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dataList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    border: 1px solid cornsilk;
+    border-radius: 7px;
+}
+
+.main_wrap {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.dataItem {
+    width: 40%;
+    font-size: 17px;
+}
+
+.dataItem_name {
+    font-weight: bold;
+    font-size: 20px;
+    color: darkorchid;
+}
