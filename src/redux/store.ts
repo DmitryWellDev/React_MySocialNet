@@ -1,7 +1,14 @@
 import ProfileReducer, {AddPostActionCreator, UpdateNewPostTextActionCreator} from "./Profile-Reducer";
 import DialogsReducer, {AddMessageActionCreator, UpdateNewMessageTextActionCreator} from "./Dialogs-Reducer";
 import SitebarReducer from "./Sitebar-Reducer";
-import {FollowAC, SetUsersAC, UnfollowAC} from "./Users-Reducer";
+import {
+    ChangeCurrentPageAC,
+    FollowAC,
+    SetTotalCountAC,
+    SetUsersAC,
+    ToggleIsFetchingAC,
+    UnfollowAC
+} from "./Users-Reducer";
 
 export type MessageType = {
     id: number
@@ -61,7 +68,11 @@ export type RootStateType = {
      ReturnType<typeof UpdateNewMessageTextActionCreator> |
      ReturnType<typeof FollowAC> |
      ReturnType<typeof UnfollowAC> |
-     ReturnType<typeof SetUsersAC>
+     ReturnType<typeof SetUsersAC> |
+     ReturnType<typeof ChangeCurrentPageAC> |
+     ReturnType<typeof SetTotalCountAC> |
+     ReturnType<typeof ToggleIsFetchingAC>
+
 
 export type StoreType = {
     _state: RootStateType

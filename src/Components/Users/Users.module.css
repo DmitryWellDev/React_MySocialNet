@@ -29,3 +29,12 @@
     font-size: 20px;
     color: darkorchid;
 }
+
+.pageIndication {
+    font-weight: bold;
+}
+
+.itemStyle {
+    color: #000;
+    padding: 3px;
+}

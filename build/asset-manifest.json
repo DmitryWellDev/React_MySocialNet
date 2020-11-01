@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/React_wayOf-SAMURAI/static/css/main.aae513ef.chunk.css",
+    "main.js": "/React_wayOf-SAMURAI/static/js/main.bc567455.chunk.js",
+    "main.js.map": "/React_wayOf-SAMURAI/static/js/main.bc567455.chunk.js.map",
+    "runtime-main.js": "/React_wayOf-SAMURAI/static/js/runtime-main.a8b49d38.js",
+    "runtime-main.js.map": "/React_wayOf-SAMURAI/static/js/runtime-main.a8b49d38.js.map",
+    "static/js/2.5f582b90.chunk.js": "/React_wayOf-SAMURAI/static/js/2.5f582b90.chunk.js",
+    "static/js/2.5f582b90.chunk.js.map": "/React_wayOf-SAMURAI/static/js/2.5f582b90.chunk.js.map",
+    "index.html": "/React_wayOf-SAMURAI/index.html",
+    "precache-manifest.fec387dd313ba506faaff96f429174b0.js": "/React_wayOf-SAMURAI/precache-manifest.fec387dd313ba506faaff96f429174b0.js",
+    "service-worker.js": "/React_wayOf-SAMURAI/service-worker.js",
+    "static/css/main.aae513ef.chunk.css.map": "/React_wayOf-SAMURAI/static/css/main.aae513ef.chunk.css.map",
+    "static/js/2.5f582b90.chunk.js.LICENSE.txt": "/React_wayOf-SAMURAI/static/js/2.5f582b90.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a8b49d38.js",
+    "static/js/2.5f582b90.chunk.js",
+    "static/css/main.aae513ef.chunk.css",
+    "static/js/main.bc567455.chunk.js"
+  ]
+}
