@@ -1,0 +1,37 @@
+.myPosts_title {
+    margin-top: 0;
+    font-size: 27px;
+    color: aliceblue;
+    text-align: center;
+}
+
+.myPosts_textField {
+    background-color: darkgrey;
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    color: aliceblue;
+}
+
+.masseges_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.myPostsButtons_wrap {
+    width: 155px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.myPosts_button {
+    width: 75px;
+    height: 20px;
+    background-color: dimgray;
+    color: aliceblue;
+    border-radius: 5px;
+    border: none;
+}

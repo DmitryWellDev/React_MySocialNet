@@ -1,14 +1,20 @@
-import ProfileReducer, {AddPostActionCreator, UpdateNewPostTextActionCreator} from "./Profile-Reducer";
+import ProfileReducer, {
+    AddPostActionCreator, setDescription,
+    SetProfile,
+    setUserName,
+    UpdateNewPostTextActionCreator
+} from "./Profile-Reducer";
 import DialogsReducer, {AddMessageActionCreator, UpdateNewMessageTextActionCreator} from "./Dialogs-Reducer";
 import SitebarReducer from "./Sitebar-Reducer";
 import {
-    ChangeCurrentPageAC,
-    FollowAC,
-    SetTotalCountAC,
-    SetUsersAC,
-    ToggleIsFetchingAC,
-    UnfollowAC
+    ChangeCurrentPage,
+    Follow,
+    SetTotalCount,
+    SetUsers,
+    ToggleIsFetching,
+    Unfollow
 } from "./Users-Reducer";
+import {setUserAuth} from "./AuthReducer";
 
 export type MessageType = {
     id: number
@@ -41,6 +47,9 @@ export type PostType = {
 export type profilePageType = {
     posts: Array<PostType>
     newPostText: string
+    profile?: null
+    userName?: null
+    description?: null
 }
 
 export type dialogsPageType = {
@@ -54,6 +63,7 @@ export type dialogsPageType = {
 export type SitebarElementType = {
     id: number
     name: string
+    photo: string
 }
 
 export type RootStateType = {
@@ -66,12 +76,16 @@ export type RootStateType = {
      ReturnType<typeof UpdateNewPostTextActionCreator> |
      ReturnType<typeof AddMessageActionCreator> |
      ReturnType<typeof UpdateNewMessageTextActionCreator> |
-     ReturnType<typeof FollowAC> |
-     ReturnType<typeof UnfollowAC> |
-     ReturnType<typeof SetUsersAC> |
-     ReturnType<typeof ChangeCurrentPageAC> |
-     ReturnType<typeof SetTotalCountAC> |
-     ReturnType<typeof ToggleIsFetchingAC>
+     ReturnType<typeof Follow> |
+     ReturnType<typeof Unfollow> |
+     ReturnType<typeof SetUsers> |
+     ReturnType<typeof ChangeCurrentPage> |
+     ReturnType<typeof SetTotalCount> |
+     ReturnType<typeof ToggleIsFetching> |
+     ReturnType<typeof SetProfile> |
+     ReturnType<typeof setUserName> |
+     ReturnType<typeof setDescription> |
+     ReturnType<typeof setUserAuth>
 
 
 export type StoreType = {
@@ -139,9 +153,9 @@ export let store: StoreType = {
             newPostText: 'React way of SAMURAI'
         },
         sitebar: [
-            {id: 1, name: 'Masha'},
-            {id: 2, name: 'Glasha'},
-            {id: 3, name: 'Natasha'},
+            {id: 1, name: 'Alex', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZmj_Cw0a3bylkInAv06Rc0DBiORC9uv6Rrw&usqp=CAU'},
+            {id: 2, name: 'Maria', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcujFaNsNgjnwgNGSosKYaQBrsmAKwjh7oeA&usqp=CAU'},
+            {id: 3, name: 'Ann', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAwG5AvRUHrqgfRMEWFDEwg_3IhUcgvYbwgA&usqp=CAU'},
         ]
     },
 

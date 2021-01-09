@@ -1,0 +1,8 @@
+
+.profile_main {
+    width: 800px;
+    height: 800px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+}

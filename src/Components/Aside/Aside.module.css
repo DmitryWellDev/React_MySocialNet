@@ -1,0 +1,21 @@
+.main {
+    color: aliceblue;
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.friendsItem {
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.friendsItem_photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid crimson;
+    cursor: pointer;
+}
+

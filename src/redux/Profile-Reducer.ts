@@ -2,6 +2,9 @@ import {ActionsTypes, PostType, profilePageType, RootStateType, StoreType} from 
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const SET_PROFILE = 'SET-PROFILE'
+const SET_USER_NAME = 'SET-USER-NAME'
+const USER_DESCRIPTION = 'USER-DESCRIPTION'
 
 let initialState = {
     posts: [
@@ -9,10 +12,14 @@ let initialState = {
         {id: 2, message: "Hello!", likes: 20},
         {id: 3, message: "Harry Crishna!", likes: 25}
     ],
-    newPostText: 'React way of SAMURAI'
+    newPostText: 'Your Message',
+    profile: null,
+    userName: null,
+    description: null
 }
 
 const ProfileReducer = (state: profilePageType = initialState, action: ActionsTypes): profilePageType => {
+
     switch (action.type) {
         case "ADD-POST":
             return {
@@ -26,23 +33,40 @@ const ProfileReducer = (state: profilePageType = initialState, action: ActionsTy
                 ...state,
                 newPostText: action.newText
             }
+        case 'SET-PROFILE': {
+
+            return {...state, profile: action.profile}
+        }
+        case 'SET-USER-NAME': {
+            return {...state, userName: action.userName}
+        }
+        case 'USER-DESCRIPTION': {
+            return {...state, description: action.descriptionText}
+        }
         default:
             return state
     }
 }
 
 export const AddPostActionCreator = (text: string) => {
-    return {
-        type: ADD_POST,
-        newPost: text
-    } as const
+    return {type: ADD_POST, newPost: text} as const
 }
 
 export const UpdateNewPostTextActionCreator = (newText: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: newText
-    } as const
+    return {type: UPDATE_NEW_POST_TEXT, newText: newText} as const
+}
+
+export const SetProfile = (profile: any) => {
+
+    return {type: SET_PROFILE, profile} as const
+}
+
+export const setUserName = (userName: any) => {
+    return {type: SET_USER_NAME, userName} as const
+}
+
+export const setDescription = (descriptionText: any) => {
+    return {type: USER_DESCRIPTION, descriptionText} as const
 }
 
 export default ProfileReducer

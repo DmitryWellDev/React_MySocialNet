@@ -26,7 +26,7 @@ import {connect} from "react-redux";
 //
 //     return (
 //         <div>
-//             <Dialogs addMessage={addMessage}
+//             <Aside addMessage={addMessage}
 //                      onMessageChange={onMessageChange}
 //                      state={state}/>
 //         </div>

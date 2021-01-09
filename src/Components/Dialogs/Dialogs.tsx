@@ -24,36 +24,46 @@ const Dialogs = (props: DPropsType) => {
     }
 
     let DialogsDataElement = props.dialogsPage.dialogs.map(dialog => <DialogItem photo={dialog.photo}
-                                                                                       name={dialog.name}
-                                                                                       id={dialog.id}/>)
+                                                                                 name={dialog.name}
+                                                                                 id={dialog.id}/>)
 
     let MessagesDataElement = props.dialogsPage.messages.map(message => <Message id={message.id}
-                                                                                       message={message.message}/>)
+                                                                                 message={message.message}/>)
 
     let UncheckedDialogsDataElement = props.dialogsPage.uncheckedDialogs.map(dialog => <DialogItem
         photo={dialog.photo} name={dialog.name} id={dialog.id}/>)
 
     let UncheckedMessagesDataElement = props.dialogsPage.uncheckedMessages.map(message => <Message id={message.id}
-                                                                                                         message={message.message}/>)
+                                                                                                   message={message.message}/>)
     return (
         <div className={styles.dialogs}>
-            <div className={styles.dialogsItems}>
-                {DialogsDataElement}
+            <div className={styles.dialogs_wrap}>
+                <div className={styles.dialogsItems}>
+                    {DialogsDataElement}
+                </div>
+                <div className={styles.messages}>
+                    {MessagesDataElement}
+                </div>
             </div>
-            <div className={styles.messages}>
-                {MessagesDataElement}
+            <div className={styles.ancheckedDialogs_wrap}>
+                <div>
+                    {UncheckedDialogsDataElement}
+                </div>
+                <div className={styles.messages}>
+                    {UncheckedMessagesDataElement}
+                </div>
             </div>
             <div>
-                {UncheckedDialogsDataElement}
-            </div>
-            <div>
-                {UncheckedMessagesDataElement}
-            </div>
-            <div>
+                <p className={styles.dialogs_title}>Messages</p>
+                <div className={styles.dialogsTextfield_wrap}>
                 <textarea
                     value={props.dialogsPage.newMessageText}
                     onChange={onMessageChange}/>
-                <button onClick={addMessage}>Add Post</button>
+                    <div className={styles.dialogsTextfieldButtons_wrap}>
+                        <button onClick={addMessage}>Add Post</button>
+                        <button>Remove</button>
+                    </div>
+                </div>
             </div>
         </div>
     );

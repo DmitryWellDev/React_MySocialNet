@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Post.module.css';
+import usersRequestImage from './../../../../assets/images/usersRequestImage.png'
 
 type PropsPostType = {
     message: string
@@ -10,9 +11,9 @@ function Post(props: PropsPostType) {
     return (
         <div className={styles.posts_item}>
             <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSock3_VhxT2Srd6NIPVn9RdI6vXxHlzV5li375-2uKQBIkiB4d&usqp=CAU"
+                src={usersRequestImage}
                 alt=""/>
-            {props.message}
+            <span className={styles.posts_message}>{props.message}</span>
             <div>
                 <span className={styles.post_like}>like: {props.likes}</span>
             </div>

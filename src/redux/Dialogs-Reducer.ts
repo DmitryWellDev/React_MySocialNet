@@ -27,7 +27,7 @@ let initialState = {
         {id: 2, message: "Buhai!"},
         {id: 3, message: "Otdihai!"}
     ],
-    newMessageText: "React way of SAMURAI",
+    newMessageText: "Your Message",
     uncheckedMessages: [
         {id: 1, message: "Yo!"},
         {id: 2, message: "Ege-ge!"},

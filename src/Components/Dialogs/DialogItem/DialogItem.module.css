@@ -1,14 +1,14 @@
 .dialog {
     text-decoration: none;
-    color: darkslategray;
+    color: aliceblue;
 }
 
 .dialog:hover{
-    color: cyan;
+    color: crimson;
 }
 
 .dialog:active {
-    color: cornflowerblue;
+    color: red;
 }
 
 .itemImage {

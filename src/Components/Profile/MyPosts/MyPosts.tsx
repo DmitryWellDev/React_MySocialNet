@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import styles from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {profilePageType, RootStateType} from "../../../redux/store";
+import {profilePageType} from "../../../redux/store";
 
 
 type MyPostsPropsType = {
@@ -24,14 +24,21 @@ function MyPosts(props: MyPostsPropsType) {
         props.updateNewPostText(e.currentTarget.value)
     }
 
+    let cleanFieldAfterClick = () => {
+        props.addPost(props.profilePage.newPostText = '')
+    }
+
     return (
         <div className={styles.myPosts_wrap}>
-            <h3>My posts</h3>
-            <div>
-                <textarea value={props.profilePage.newPostText}
+            <p className={styles.myPosts_title}>My posts</p>
+            <div className={styles.masseges_wrap}>
+                <textarea onClick={cleanFieldAfterClick} className={styles.myPosts_textField}
+                          value={props.profilePage.newPostText}
                           onChange={onPostChange}/>
-                <button onClick={addPost}>Add Post</button>
-                <button>Remove</button>
+                <div className={styles.myPostsButtons_wrap}>
+                    <button className={styles.myPosts_button} onClick={addPost}>Add Post</button>
+                    <button className={styles.myPosts_button}>Remove</button>
+                </div>
             </div>
             <div>
                 {postDataElement}

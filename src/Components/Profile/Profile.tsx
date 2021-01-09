@@ -1,14 +1,16 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {ReduxStoreType} from "../../redux/store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import './Profile.css';
 
 
 
-function Profile() {
+
+function Profile(props: any) {
+
     return (
-        <div>
-            <ProfileInfo/>
+        <div className={'profile_main'}>
+            <ProfileInfo profile={props.profile} userName={props.userName} description={props.description}/>
             <MyPostsContainer/>
         </div>
     );

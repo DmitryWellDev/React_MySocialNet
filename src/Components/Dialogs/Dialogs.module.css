@@ -1,24 +1,56 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 7fr 2fr 1fr;
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
 
-    font-weight: bold;
+.dialogs_title {
+    font-size: 24px;
+    color: aliceblue;
+    text-align: center;
 }
 
 .dialog {
     text-decoration: none;
-    color: darkslategray;
+    color: aliceblue;
 }
 
-.dialog:hover{
-    color: darkred;
+.dialog:hover {
+    color: aliceblue;
 }
 
 .dialog.active {
-    color: cornflowerblue;
+    color: aliceblue;
 }
 
 .dialog.active:hover {
     color: darkred;
 }
 
+.dialogs_wrap {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ancheckedDialogs_wrap {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.messages {
+    color: aliceblue;
+}
+
+.dialogsTextfield_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.dialogsTextfieldButtons_wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}

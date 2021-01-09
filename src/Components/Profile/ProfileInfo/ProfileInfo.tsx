@@ -1,16 +1,19 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
+import {Preloader} from "../../Common/Preloader";
+import mockUserImage from '../../../assets/images/ava.png';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props: any) => {
+    if (!props.profile) {
+        return <Preloader/>
+    }
+    const descriptionMock = 'STATUS: Just silence'
     return (
         <div>
             <div>
-                <img className={styles.content_image}
-                     src="https://www.azocleantech.com/images/news/ImageForNews_26919_15786618897301054.png"
-                     alt=""/>
-            </div>
-            <div>
-                avatar+descr
+                <img className={styles.userImage} src={props.profile.photos.large ? props.profile.photos.large : mockUserImage}/>
+                <div className={styles.name}>{props.profile.fullName}</div>
+                <div className={styles.status}>{props.profile.aboutMe !== null ? props.profile.aboutMe : descriptionMock}</div>
             </div>
         </div>
     )

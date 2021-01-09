@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from 'react';
 import styles from "./Users.module.css";
-import userImage from "../../assets/images/photo.jpg";
+import userImage from "../../assets/images/usersRequestImage.png";
 import {UserType} from "../../redux/Users-Reducer";
+import {NavLink} from "react-router-dom";
+
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -14,8 +16,8 @@ type UsersPropsType = {
 }
 
 export const Users = (props: UsersPropsType) => {
-
-    let pagesCount = Math.ceil(props.totalCount / props.pageSize)
+    let grovingPort = props.pageSize * 2
+    let pagesCount = Math.ceil(props.totalCount / grovingPort)
 
     let pages: Array<number> = []
 
@@ -23,37 +25,68 @@ export const Users = (props: UsersPropsType) => {
         pages.push(i)
     }
 
-    return(
-        <div>
+    let portionCount = pagesCount
+    let [portionNumber, setPortionNumber] = useState(1)
+    let leftEdgeOfPortion = (portionNumber - 1) * grovingPort + 1
+    let rightEdgeOfPortion = portionNumber * grovingPort
+
+    return (
+        <div className={styles.users_wrap}>
+            <div className={styles.pageIndication_wrap}>
+            {portionNumber > 1 && <button onClick={() => {
+                setPortionNumber(portionNumber - 1)
+            }}>prev</button>}
             <div>
-                {pages.map((p) => {
-                    return <span onClick={(e) => {props.onPageChanged(p)}} className={`${styles.itemStyle}${props.currentPage === p ? styles.pageIndication : ''}`}>{p}</span>
+                {pages.filter((p) => {
+                    if (p >= leftEdgeOfPortion && p <= rightEdgeOfPortion) {
+                        return p
+                    }
+                }).map((p) => {
+                    return <span
+                        className={`${styles.itemStyle} ${props.currentPage == p ? styles.pageIndication : ''}`}
+                        onClick={(e) => {
+                            props.onPageChanged(p)
+                        }}>{p}</span>
                 })}
             </div>
-            {
-                props.users.map((u: any) => <div key={u.id}>
-                    <div className={styles.main_wrap}>
-                        <div>
-                            <img className={styles.item_image}
-                                 src={u.photos.small != null ? u.photos.small : userImage}/>
+            {portionCount > portionNumber && <button onClick={() => {
+                setPortionNumber(portionNumber + 1)
+            }}>next</button>}
+            </div>
+            <div className={styles.itemsList_wrap}>
+                {
+                    props.users.map((u: any) => <div key={u.id}>
+                        <div className={styles.main_wrap}>
+                            <div>
+                                <NavLink to={'/profile/' + u.id}>
+                                    <img className={styles.item_image}
+                                         src={u.photos.small != null ? u.photos.small : userImage}/>
+                                </NavLink>
 
-                            {u.followed
-                                ? <button onClick={() => {
-                                    props.Unfollow(u.id)
-                                }}>unfollow</button>
-                                : <button onClick={() => {
-                                    props.Follow(u.id)
-                                }}>follow</button>}
+                                {u.followed
+                                    ? <button onClick={() => {
+                                        props.Unfollow(u.id)
+                                    }}>unfollow</button>
+                                    : <button onClick={() => {
+                                        props.Follow(u.id)
+                                    }}>follow</button>}
+                            </div>
+                            <div className={styles.dataList}>
+                                <div className={styles.dataItemNameStat_wrep}>
+                                    <NavLink to={'/profile/' + u.id} className={styles.dataItem_name}>
+                                        <div>{u.name}</div>
+                                    </NavLink>
+                                    <div className={styles.dataItem_status}>fdbftb{u.status}</div>
+                                </div>
+                                <div className={styles.dataItemCityCountry_wrep}>
+                                    <div className={styles.dataItem}>{"country"}</div>
+                                    <div className={styles.dataItem}>{"city"}</div>
+                                </div>
+                            </div>
                         </div>
-                        <div className={styles.dataList}>
-                            <div className={`${styles.dataItem} ${styles.dataItem_name}`}>{u.name}</div>
-                            <div className={styles.dataItem}>{"u.location.country"}</div>
-                            <div className={styles.dataItem}>{u.status}</div>
-                            <div className={styles.dataItem}>{"u.location.city"}</div>
-                        </div>
-                    </div>
-                </div>)
-            }
+                    </div>)
+                }
+            </div>
         </div>
     )
 }

@@ -1,9 +1,8 @@
 import React from 'react';
-import {ReduxStoreType, RootStateType} from "../../redux/store";
+import {RootStateType} from "../../redux/store";
 import Navbar from "./Navbar";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {AddPostActionCreator, UpdateNewPostTextActionCreator} from "../../redux/Profile-Reducer";
 
 // type SitebarContainerTypes = {
 //     store: ReduxStoreType

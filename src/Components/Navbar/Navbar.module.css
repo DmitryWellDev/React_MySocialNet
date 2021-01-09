@@ -1,20 +1,36 @@
 .nav {
-  grid-area: n;
-  background-color: cadetblue;
+  /*grid-area: n;*/
+  background-color: transparent;
   color: aliceblue;
+}
+
+.navList {
+  width: 800px;
+  height: 50px;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align:middle;
+  display: flex;
+  justify-content: center;
 }
 
 .nav a {
   text-decoration: none;
   color: aliceblue;
+
 }
 
 .nav a:hover {
   color: crimson;
 }
 
+.item {
+  width: 100px;
+  padding-top: 20px;
+}
+
 .item a.active {
-  color: brown;
+  color: crimson;
 }
 
 .friendsList {
