@@ -9,9 +9,9 @@ type HeaderPropsType = {
 function Header(props: HeaderPropsType) {
     return (<div>
             <header className={styles.header}>
-                Dark Chat
+                My Chat
             </header>
-            <div className={styles.login}>login</div>
+            {/*<div className={styles.login}>login</div>*/}
         </div>
     );
 }
