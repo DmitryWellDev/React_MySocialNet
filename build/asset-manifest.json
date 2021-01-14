@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/React_MySocialNet/static/css/main.ddccd358.chunk.css",
+    "main.js": "/React_MySocialNet/static/js/main.efbb3be0.chunk.js",
+    "main.js.map": "/React_MySocialNet/static/js/main.efbb3be0.chunk.js.map",
+    "runtime-main.js": "/React_MySocialNet/static/js/runtime-main.09afcd4a.js",
+    "runtime-main.js.map": "/React_MySocialNet/static/js/runtime-main.09afcd4a.js.map",
+    "static/js/2.d7e2b2b5.chunk.js": "/React_MySocialNet/static/js/2.d7e2b2b5.chunk.js",
+    "static/js/2.d7e2b2b5.chunk.js.map": "/React_MySocialNet/static/js/2.d7e2b2b5.chunk.js.map",
+    "index.html": "/React_MySocialNet/index.html",
+    "precache-manifest.4877d454f8b5818b05f576f2fd085e83.js": "/React_MySocialNet/precache-manifest.4877d454f8b5818b05f576f2fd085e83.js",
+    "service-worker.js": "/React_MySocialNet/service-worker.js",
+    "static/css/main.ddccd358.chunk.css.map": "/React_MySocialNet/static/css/main.ddccd358.chunk.css.map",
+    "static/js/2.d7e2b2b5.chunk.js.LICENSE.txt": "/React_MySocialNet/static/js/2.d7e2b2b5.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/React_MySocialNet/static/media/50-Beautiful-and-Minimalist-Presentation-Backgrounds-01.b3f758f8.jpg",
+    "static/media/d1151f5f321f859c4d13f28cb71cf424_w200.gif": "/React_MySocialNet/static/media/d1151f5f321f859c4d13f28cb71cf424_w200.aa47ede4.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09afcd4a.js",
+    "static/js/2.d7e2b2b5.chunk.js",
+    "static/css/main.ddccd358.chunk.css",
+    "static/js/main.efbb3be0.chunk.js"
+  ]
+}
