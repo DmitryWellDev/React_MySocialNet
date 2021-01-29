@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/React_MySocialNet/static/css/main.ddccd358.chunk.css",
-    "main.js": "/React_MySocialNet/static/js/main.f1df0b0d.chunk.js",
-    "main.js.map": "/React_MySocialNet/static/js/main.f1df0b0d.chunk.js.map",
+    "main.css": "/React_MySocialNet/static/css/main.65de8111.chunk.css",
+    "main.js": "/React_MySocialNet/static/js/main.4445054c.chunk.js",
+    "main.js.map": "/React_MySocialNet/static/js/main.4445054c.chunk.js.map",
     "runtime-main.js": "/React_MySocialNet/static/js/runtime-main.09afcd4a.js",
     "runtime-main.js.map": "/React_MySocialNet/static/js/runtime-main.09afcd4a.js.map",
-    "static/js/2.d7e2b2b5.chunk.js": "/React_MySocialNet/static/js/2.d7e2b2b5.chunk.js",
-    "static/js/2.d7e2b2b5.chunk.js.map": "/React_MySocialNet/static/js/2.d7e2b2b5.chunk.js.map",
+    "static/js/2.7697a141.chunk.js": "/React_MySocialNet/static/js/2.7697a141.chunk.js",
+    "static/js/2.7697a141.chunk.js.map": "/React_MySocialNet/static/js/2.7697a141.chunk.js.map",
     "index.html": "/React_MySocialNet/index.html",
-    "precache-manifest.7019da92cc7fbfd80ad3c20c9df6e51e.js": "/React_MySocialNet/precache-manifest.7019da92cc7fbfd80ad3c20c9df6e51e.js",
+    "precache-manifest.6804a52d53bf6510459138c54b8c981c.js": "/React_MySocialNet/precache-manifest.6804a52d53bf6510459138c54b8c981c.js",
     "service-worker.js": "/React_MySocialNet/service-worker.js",
-    "static/css/main.ddccd358.chunk.css.map": "/React_MySocialNet/static/css/main.ddccd358.chunk.css.map",
-    "static/js/2.d7e2b2b5.chunk.js.LICENSE.txt": "/React_MySocialNet/static/js/2.d7e2b2b5.chunk.js.LICENSE.txt",
+    "static/css/main.65de8111.chunk.css.map": "/React_MySocialNet/static/css/main.65de8111.chunk.css.map",
+    "static/js/2.7697a141.chunk.js.LICENSE.txt": "/React_MySocialNet/static/js/2.7697a141.chunk.js.LICENSE.txt",
     "static/media/App.css": "/React_MySocialNet/static/media/50-Beautiful-and-Minimalist-Presentation-Backgrounds-01.b3f758f8.jpg",
     "static/media/d1151f5f321f859c4d13f28cb71cf424_w200.gif": "/React_MySocialNet/static/media/d1151f5f321f859c4d13f28cb71cf424_w200.aa47ede4.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.09afcd4a.js",
-    "static/js/2.d7e2b2b5.chunk.js",
-    "static/css/main.ddccd358.chunk.css",
-    "static/js/main.f1df0b0d.chunk.js"
+    "static/js/2.7697a141.chunk.js",
+    "static/css/main.65de8111.chunk.css",
+    "static/js/main.4445054c.chunk.js"
   ]
 }
