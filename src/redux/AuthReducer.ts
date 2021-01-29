@@ -37,29 +37,35 @@ export type authInitialStateType = {
     userId: number | null
     email: string | null
     login: string | null
+    isFatch: boolean
 }
 
 let initialState = {
-    userId: null,
     email: null,
-    login: null
+    userId: null,
+    login: null,
+    isFatch: false
 
 }
 
 export const AuthReducer = (state: authInitialStateType = initialState, action: ActionsTypes): authInitialStateType => {
+    console.log(state)
+
     switch (action.type) {
         case 'SET-USER-AUTH':
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isFatch: true
             }
         default:
             return state
     }
 }
 
-export const setUserAuth = (userId: number, email: string, login: string) => {
-    return {type: SET_USER_AUTH, data: {userId, email, login}} as const
+export const setUserAuth = (email: string, id: number, login: string) => {
+
+    return {type: SET_USER_AUTH, data: {email, id, login}} as const
 }
 
 

@@ -4,6 +4,7 @@ import {Preloader} from "../../Common/Preloader";
 import mockUserImage from '../../../assets/images/ava.png';
 
 const ProfileInfo = (props: any) => {
+    console.log(props.profile)
     if (!props.profile) {
         return <Preloader/>
     }

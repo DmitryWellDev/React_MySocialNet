@@ -3,6 +3,8 @@ import styles from "./Users.module.css";
 import userImage from "../../assets/images/usersRequestImage.png";
 import {UserType} from "../../redux/Users-Reducer";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
+
 
 
 type UsersPropsType = {
@@ -33,25 +35,27 @@ export const Users = (props: UsersPropsType) => {
     return (
         <div className={styles.users_wrap}>
             <div className={styles.pageIndication_wrap}>
-            {portionNumber > 1 && <button onClick={() => {
-                setPortionNumber(portionNumber - 1)
-            }}>prev</button>}
-            <div>
-                {pages.filter((p) => {
-                    if (p >= leftEdgeOfPortion && p <= rightEdgeOfPortion) {
-                        return p
-                    }
-                }).map((p) => {
-                    return <span
-                        className={`${styles.itemStyle} ${props.currentPage == p ? styles.pageIndication : ''}`}
-                        onClick={(e) => {
-                            props.onPageChanged(p)
-                        }}>{p}</span>
-                })}
-            </div>
-            {portionCount > portionNumber && <button onClick={() => {
-                setPortionNumber(portionNumber + 1)
-            }}>next</button>}
+                <div>
+                    {portionNumber > 1 && <button onClick={() => {
+                        setPortionNumber(portionNumber - 1)
+                    }}>prev</button>}
+                </div>
+                <div>
+                    {pages.filter((p) => {
+                        if (p >= leftEdgeOfPortion && p <= rightEdgeOfPortion) {
+                            return p
+                        }
+                    }).map((p) => {
+                        return <span
+                            className={`${styles.itemStyle} ${props.currentPage == p ? styles.pageIndication : ''}`}
+                            onClick={(e) => {
+                                props.onPageChanged(p)
+                            }}>{p}</span>
+                    })}
+                </div>
+                {portionCount > portionNumber && <button onClick={() => {
+                    setPortionNumber(portionNumber + 1)
+                }}>next</button>}
             </div>
             <div className={styles.itemsList_wrap}>
                 {
@@ -65,10 +69,28 @@ export const Users = (props: UsersPropsType) => {
 
                                 {u.followed
                                     ? <button onClick={() => {
-                                        props.Unfollow(u.id)
+
+                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                            withCredentials: true,
+                                            headers: {'API-KEY': '5a98b02d-fc25-4d4c-80d0-9acdb32eea66'}})
+                                            .then((response: any) => {
+                                                if (response.data.resultCode == 0) {
+                                                    props.Unfollow(u.id)
+                                                }
+                                            })
+
                                     }}>unfollow</button>
                                     : <button onClick={() => {
-                                        props.Follow(u.id)
+
+                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                            withCredentials: true,
+                                            headers: {'API-KEY': '5a98b02d-fc25-4d4c-80d0-9acdb32eea66'}})
+                                            .then((response: any) => {
+                                                if (response.data.resultCode == 0) {
+                                                    props.Follow(u.id)
+                                                }
+                                            })
+
                                     }}>follow</button>}
                             </div>
                             <div className={styles.dataList}>
@@ -76,7 +98,7 @@ export const Users = (props: UsersPropsType) => {
                                     <NavLink to={'/profile/' + u.id} className={styles.dataItem_name}>
                                         <div>{u.name}</div>
                                     </NavLink>
-                                    <div className={styles.dataItem_status}>fdbftb{u.status}</div>
+                                    <div className={styles.dataItem_status}>{u.status}</div>
                                 </div>
                                 <div className={styles.dataItemCityCountry_wrep}>
                                     <div className={styles.dataItem}>{"country"}</div>

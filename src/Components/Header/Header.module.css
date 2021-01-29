@@ -13,3 +13,15 @@
   color: cornsilk;
   margin: 0 auto;
 }
+
+.login:hover {
+    color: crimson;
+}
+
+.login:active {
+    color: crimson;
+}
+
+.myLogin {
+    color: white;
+}
