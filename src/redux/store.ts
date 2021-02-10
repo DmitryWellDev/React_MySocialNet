@@ -10,7 +10,7 @@ import {
     ChangeCurrentPage,
     Follow,
     SetTotalCount,
-    SetUsers,
+    SetUsers, ToggleFollowingProgress,
     ToggleIsFetching,
     Unfollow
 } from "./Users-Reducer";
@@ -85,7 +85,8 @@ export type RootStateType = {
      ReturnType<typeof SetProfile> |
      ReturnType<typeof setUserName> |
      ReturnType<typeof setDescription> |
-     ReturnType<typeof setUserAuth>
+     ReturnType<typeof setUserAuth> |
+     ReturnType<typeof ToggleFollowingProgress>
 
 
 export type StoreType = {

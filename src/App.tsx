@@ -11,6 +11,7 @@ import ProfileContainer from "./Components/Profile/ProfileContainer";
 import AsideContainer from "./Components/Aside/AsideContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
+import {Subscriptions} from "./Components/Subscriptions/Subscriptions";
 
 
 type PropsType = {
@@ -36,6 +37,7 @@ const App: FC<PropsType> = (props) => {
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/users' render={() => <UsersContainer/>}/>
                     <Route path='/login' render={() => <Login/>}/>
+                    <Route path='/subscriptions' render={() => <Subscriptions/>}/>
                 </div>
             </div>
         </div>
