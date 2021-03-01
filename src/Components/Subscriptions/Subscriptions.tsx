@@ -22,6 +22,7 @@ export const Subscriptions = () => {
     const Users = useSelector<RootStateType, any>((state) => {
         return state.usersPage.users
     })
+    console.log(Users)
 
     const followedUsers = Users.filter((el: userType) => {
        if (el.followed === true) {

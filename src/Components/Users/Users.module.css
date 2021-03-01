@@ -58,6 +58,7 @@
 .itemStyle {
     color: aliceblue;
     padding: 5px;
+    cursor: pointer;
 }
 
 .pageIndication {

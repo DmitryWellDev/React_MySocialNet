@@ -61,7 +61,6 @@ export const Users = (props: UsersPropsType) => {
             <div className={styles.itemsList_wrap}>
                 {
                     props.users.map((u: any) => <div key={u.id}>
-                        {console.log(u)}
                         <div className={styles.main_wrap}>
                             <div>
                                 <NavLink to={'/profile/' + u.id}>
