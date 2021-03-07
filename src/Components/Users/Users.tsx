@@ -1,24 +1,24 @@
 import React, {useState} from 'react';
 import styles from "./Users.module.css";
 import userImage from "../../assets/images/usersRequestImage.png";
-import {UserType} from "../../redux/Users-Reducer";
+import {FollowTC, UnfollowTC, UserType} from "../../redux/Users-Reducer";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {useDispatch} from "react-redux";
 
 
 type UsersPropsType = {
     users: Array<UserType>
-    Follow: (userId: number) => void
-    Unfollow: (userId: number) => void
     pageSize: number
     totalCount: number
     currentPage: number
     onPageChanged: (p: number) => void
     followingInProgress: Array<number>
-    ToggleFollowingProgress: (isFetching: boolean, id: number) => void
 }
 
 export const Users = (props: UsersPropsType) => {
+
+  const dispatch = useDispatch()
+
     let grovingPort = props.pageSize * 2
     let pagesCount = Math.ceil(props.totalCount / grovingPort)
 
@@ -61,43 +61,25 @@ export const Users = (props: UsersPropsType) => {
             <div className={styles.itemsList_wrap}>
                 {
                     props.users.map((u: any) => <div key={u.id}>
+                        {console.log(u.followed)}
                         <div className={styles.main_wrap}>
+
                             <div>
                                 <NavLink to={'/profile/' + u.id}>
                                     <img className={styles.item_image}
                                          src={u.photos.small != null ? u.photos.small : userImage}/>
                                 </NavLink>
-
+                                {/*//----------------------------------------------------------------------------------*/}
                                 {u.followed
                                     ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                        props.ToggleFollowingProgress(true, u.id)
-                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                            withCredentials: true,
-                                            headers: {'API-KEY': '5a98b02d-fc25-4d4c-80d0-9acdb32eea66'}
-                                        })
-                                            .then((response: any) => {
-                                                if (response.data.resultCode == 0) {
-                                                    props.Unfollow(u.id)
-                                                }
-                                                props.ToggleFollowingProgress(false, u.id)
-                                            })
-
-                                    }}>unfollow</button>
+                                        dispatch(UnfollowTC(u.id))
+                                    }}>{`unfollow`}</button>
+                                    //----------------------------------------------------------------------------------
                                     : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                        props.ToggleFollowingProgress(true, u.id)
-                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                            withCredentials: true,
-                                            headers: {'API-KEY': '5a98b02d-fc25-4d4c-80d0-9acdb32eea66'}
-                                        })
-                                            .then((response: any) => {
-                                                if (response.data.resultCode == 0) {
-                                                    props.Follow(u.id)
-                                                }
-                                                props.ToggleFollowingProgress(false, u.id)
-                                            })
-
-                                    }}>follow</button>}
+                                        dispatch(FollowTC(u.id))
+                                    }}>{`follow`}</button>}
                             </div>
+                            {/*//----------------------------------------------------------------------------------*/}
                             <div className={styles.dataList}>
                                 <div className={styles.dataItemNameStat_wrep}>
                                     <NavLink to={'/profile/' + u.id} className={styles.dataItem_name}>

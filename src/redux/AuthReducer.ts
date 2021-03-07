@@ -1,37 +1,8 @@
 import {ActionsTypes} from "./store";
+import {Dispatch} from "redux";
+import {usersAPI} from "../api/api";
 
 const SET_USER_AUTH = 'SET-USER-AUTH'
-
-
-
-// export type StateType = {
-//     users: Array<UserType>
-//     pageSize: number
-//     totalCount: number
-//     currentPage: number
-//     isFetching: boolean
-// }
-//
-// export type UserType = {
-//     followed: boolean
-//     id: number
-//     name: string
-//     location: UserLocationType
-//     status: string
-//     photos: userPhotoType
-// }
-//
-// type userPhotoType = {
-//     small: string | undefined
-//     large: string | undefined
-// }
-//
-// type UserLocationType = {
-//     country: string
-//     city: string
-// }
-//
-//
 
 export type authInitialStateType = {
     userId: number | null
@@ -63,8 +34,17 @@ export const AuthReducer = (state: authInitialStateType = initialState, action: 
 }
 
 export const setUserAuth = (email: string, id: number, login: string) => {
-
     return {type: SET_USER_AUTH, data: {email, id, login}} as const
+}
+
+export const SetUserAuthTC = () => (dispatch: Dispatch<ActionsTypes>) => {
+    usersAPI.getUserAuth()
+        .then((res: any) => {
+            if (res.data.resultCode === 0) {
+                let {email, id, login} = res.data.data
+                dispatch(setUserAuth(email, id, login))
+            }
+        })
 }
 
 

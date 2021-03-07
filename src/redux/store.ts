@@ -76,17 +76,10 @@ export type RootStateType = {
      ReturnType<typeof UpdateNewPostTextActionCreator> |
      ReturnType<typeof AddMessageActionCreator> |
      ReturnType<typeof UpdateNewMessageTextActionCreator> |
-     ReturnType<typeof Follow> |
-     ReturnType<typeof Unfollow> |
-     ReturnType<typeof SetUsers> |
-     ReturnType<typeof ChangeCurrentPage> |
-     ReturnType<typeof SetTotalCount> |
-     ReturnType<typeof ToggleIsFetching> |
      ReturnType<typeof SetProfile> |
      ReturnType<typeof setUserName> |
      ReturnType<typeof setDescription> |
-     ReturnType<typeof setUserAuth> |
-     ReturnType<typeof ToggleFollowingProgress>
+     ReturnType<typeof setUserAuth>
 
 
 export type StoreType = {
