@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import './App.css';
 import {Route} from 'react-router-dom';
 import News from "./Components/News/News";
@@ -12,15 +12,10 @@ import AsideContainer from "./Components/Aside/AsideContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
 import {Subscriptions} from "./Components/Subscriptions/Subscriptions";
+import UserLogin from "./Components/Login/Login";
+import LoginPage from "./Components/Login/LoginPage";
 
-
-type PropsType = {
-    // store: ReduxStoreType
-    // dispatch: (action: ActionsTypes) => void
-}
-
-const App: FC<PropsType> = (props) => {
-
+const App = () => {
     return (
         <div className="App-wrapper">
             <HeaderContainer/>
@@ -36,8 +31,9 @@ const App: FC<PropsType> = (props) => {
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/users' render={() => <UsersContainer/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
+                    <Route path='/login' render={() => <UserLogin/>}/>
                     <Route path='/subscriptions' render={() => <Subscriptions/>}/>
+                    <Route path='/loginPage' render={() => <LoginPage/>}/>
                 </div>
             </div>
         </div>

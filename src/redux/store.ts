@@ -6,15 +6,7 @@ import ProfileReducer, {
 } from "./Profile-Reducer";
 import DialogsReducer, {AddMessageActionCreator, UpdateNewMessageTextActionCreator} from "./Dialogs-Reducer";
 import SitebarReducer from "./Sitebar-Reducer";
-import {
-    ChangeCurrentPage,
-    Follow,
-    SetTotalCount,
-    SetUsers, ToggleFollowingProgress,
-    ToggleIsFetching,
-    Unfollow
-} from "./Users-Reducer";
-import {setUserAuth} from "./AuthReducer";
+import {authInitialStateType, setUserAuth} from "./AuthReducer";
 
 export type MessageType = {
     id: number
@@ -70,6 +62,7 @@ export type RootStateType = {
     dialogsPage: dialogsPageType
     profilePage: profilePageType
     sitebar: Array<SitebarElementType>
+    auth: authInitialStateType
 }
 
  export type ActionsTypes = ReturnType<typeof AddPostActionCreator> |
@@ -150,7 +143,13 @@ export let store: StoreType = {
             {id: 1, name: 'Alex', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZmj_Cw0a3bylkInAv06Rc0DBiORC9uv6Rrw&usqp=CAU'},
             {id: 2, name: 'Maria', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcujFaNsNgjnwgNGSosKYaQBrsmAKwjh7oeA&usqp=CAU'},
             {id: 3, name: 'Ann', photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAwG5AvRUHrqgfRMEWFDEwg_3IhUcgvYbwgA&usqp=CAU'},
-        ]
+        ],
+        auth: {
+            email: null,
+            userId: null,
+            login: null,
+            isFatch: false
+        }
     },
 
     getState() {

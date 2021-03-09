@@ -2,6 +2,7 @@ import React, {ChangeEvent} from 'react';
 import styles from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {profilePageType} from "../../../redux/store";
+import { Redirect } from 'react-router-dom';
 
 
 type MyPostsPropsType = {
@@ -9,10 +10,12 @@ type MyPostsPropsType = {
     updateNewPostText: (newText: string) => void
     profilePage: profilePageType
     newPostText: string
+    isAuth: boolean
 }
 
 
 function MyPosts(props: MyPostsPropsType) {
+    console.log(props.isAuth)
 
     let addPost = () => {
         props.addPost(props.profilePage.newPostText)
@@ -28,23 +31,26 @@ function MyPosts(props: MyPostsPropsType) {
         props.addPost(props.profilePage.newPostText = '')
     }
 
-    return (
-        <div className={styles.myPosts_wrap}>
-            <p className={styles.myPosts_title}>My posts</p>
-            <div className={styles.masseges_wrap}>
+
+    if (!props.isAuth) return <Redirect to={"/loginPage"}/>
+
+        return (
+            <div className={styles.myPosts_wrap}>
+                <p className={styles.myPosts_title}>My posts</p>
+                <div className={styles.masseges_wrap}>
                 <textarea onClick={cleanFieldAfterClick} className={styles.myPosts_textField}
                           value={props.profilePage.newPostText}
                           onChange={onPostChange}/>
-                <div className={styles.myPostsButtons_wrap}>
-                    <button className={styles.myPosts_button} onClick={addPost}>Add Post</button>
-                    <button className={styles.myPosts_button}>Remove</button>
+                    <div className={styles.myPostsButtons_wrap}>
+                        <button className={styles.myPosts_button} onClick={addPost}>Add Post</button>
+                        <button className={styles.myPosts_button}>Remove</button>
+                    </div>
+                </div>
+                <div>
+                    {postDataElement}
                 </div>
             </div>
-            <div>
-                {postDataElement}
-            </div>
-        </div>
-    );
+        );
 }
 
 

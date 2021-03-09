@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReduxStoreType, RootStateType} from "../../../redux/store";
+import {RootStateType} from "../../../redux/store";
 import {AddPostActionCreator, UpdateNewPostTextActionCreator} from '../../../redux/Profile-Reducer'
 import MyPosts from "./MyPosts";
 import {Dispatch} from "redux";
@@ -9,7 +9,8 @@ import {connect} from "react-redux";
 let mapStateToProps = (state: RootStateType) => {
     return {
         profilePage: state.profilePage,
-        newPostText: state.profilePage.newPostText
+        newPostText: state.profilePage.newPostText,
+        isAuth: state.auth.isFatch
     }
 }
 

@@ -3,11 +3,13 @@ import styles from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {dialogsPageType, RootStateType} from "../../redux/store";
+import {Redirect} from "react-router-dom";
 
 type DPropsType = {
     addMessage: (text: string) => void
     onMessageChange: (newText: string) => void
     dialogsPage: dialogsPageType
+    isAuth: boolean
 }
 
 
@@ -35,6 +37,9 @@ const Dialogs = (props: DPropsType) => {
 
     let UncheckedMessagesDataElement = props.dialogsPage.uncheckedMessages.map(message => <Message id={message.id}
                                                                                                    message={message.message}/>)
+
+    if (!props.isAuth) return <Redirect to={"/loginPage"}/>
+
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogs_wrap}>

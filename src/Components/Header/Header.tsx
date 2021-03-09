@@ -9,7 +9,6 @@ type HeaderPropsType = {
 }
 
 function Header(props: HeaderPropsType) {
-    //debugger
     return (<div>
             <header className={styles.header}>
                 My Chat
@@ -21,5 +20,4 @@ function Header(props: HeaderPropsType) {
     );
 }
 
-
-export default Header;
+export default Header

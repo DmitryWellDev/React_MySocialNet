@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Login.module.css';
-import {store} from "../../redux/store";
 
-const Login = () => {
+const UserLogin = () => {
     return(
         <div>
             <p className={styles.login_title}>Login</p>
@@ -10,4 +9,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default UserLogin

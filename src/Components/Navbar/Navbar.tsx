@@ -20,6 +20,7 @@ function Navbar(props: SitebarTypes) {
                 <div className={styles.item}><NavLink to="/settings" activeClassName={styles.active}>Settings</NavLink></div>
                 <div className={styles.item}><NavLink to="/users" activeClassName={styles.active}>Users</NavLink></div>
                 <div className={styles.item}><NavLink to="/subscriptions" activeClassName={styles.active}>Subscriptions</NavLink></div>
+                <div className={styles.item}><NavLink to="/loginPage" activeClassName={styles.active}>login</NavLink></div>
             </nav>
         </div>
     );
