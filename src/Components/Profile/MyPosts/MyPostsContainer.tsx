@@ -9,8 +9,7 @@ import {connect} from "react-redux";
 let mapStateToProps = (state: RootStateType) => {
     return {
         profilePage: state.profilePage,
-        newPostText: state.profilePage.newPostText,
-        isAuth: state.auth.isFatch
+        newPostText: state.profilePage.newPostText
     }
 }
 

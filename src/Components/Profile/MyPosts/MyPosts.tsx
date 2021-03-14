@@ -10,12 +10,10 @@ type MyPostsPropsType = {
     updateNewPostText: (newText: string) => void
     profilePage: profilePageType
     newPostText: string
-    isAuth: boolean
 }
 
 
 function MyPosts(props: MyPostsPropsType) {
-    console.log(props.isAuth)
 
     let addPost = () => {
         props.addPost(props.profilePage.newPostText)
@@ -30,9 +28,6 @@ function MyPosts(props: MyPostsPropsType) {
     let cleanFieldAfterClick = () => {
         props.addPost(props.profilePage.newPostText = '')
     }
-
-
-    if (!props.isAuth) return <Redirect to={"/loginPage"}/>
 
         return (
             <div className={styles.myPosts_wrap}>

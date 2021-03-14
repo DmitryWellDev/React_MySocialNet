@@ -2,7 +2,8 @@ import ProfileReducer, {
     AddPostActionCreator, setDescription,
     SetProfile,
     setUserName,
-    UpdateNewPostTextActionCreator
+    UpdateNewPostTextActionCreator,
+    setProfileStatus
 } from "./Profile-Reducer";
 import DialogsReducer, {AddMessageActionCreator, UpdateNewMessageTextActionCreator} from "./Dialogs-Reducer";
 import SitebarReducer from "./Sitebar-Reducer";
@@ -42,6 +43,7 @@ export type profilePageType = {
     profile?: null
     userName?: null
     description?: null
+    status?: null | string
 }
 
 export type dialogsPageType = {
@@ -72,7 +74,8 @@ export type RootStateType = {
      ReturnType<typeof SetProfile> |
      ReturnType<typeof setUserName> |
      ReturnType<typeof setDescription> |
-     ReturnType<typeof setUserAuth>
+     ReturnType<typeof setUserAuth> |
+     ReturnType<typeof setProfileStatus>
 
 
 export type StoreType = {

@@ -5,6 +5,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_PROFILE = 'SET-PROFILE'
 const SET_USER_NAME = 'SET-USER-NAME'
 const USER_DESCRIPTION = 'USER-DESCRIPTION'
+const SET_PROFILE_STATUS = 'SET-PROFILE-STATUS'
 
 let initialState = {
     posts: [
@@ -15,7 +16,8 @@ let initialState = {
     newPostText: 'Your Message',
     profile: null,
     userName: null,
-    description: null
+    description: null,
+    status: null
 }
 
 const ProfileReducer = (state: profilePageType = initialState, action: ActionsTypes): profilePageType => {
@@ -43,6 +45,9 @@ const ProfileReducer = (state: profilePageType = initialState, action: ActionsTy
         case 'USER-DESCRIPTION': {
             return {...state, description: action.descriptionText}
         }
+        case 'SET-PROFILE-STATUS': {
+            return {...state, status: action.status}
+        }
         default:
             return state
     }
@@ -67,6 +72,11 @@ export const setUserName = (userName: any) => {
 
 export const setDescription = (descriptionText: any) => {
     return {type: USER_DESCRIPTION, descriptionText} as const
+}
+
+export const setProfileStatus = (status: string) => {
+    console.log(status)
+    return {type: SET_PROFILE_STATUS, status} as const
 }
 
 export default ProfileReducer

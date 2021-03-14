@@ -10,7 +10,6 @@ import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import AsideContainer from "./Components/Aside/AsideContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
-import Login from "./Components/Login/Login";
 import {Subscriptions} from "./Components/Subscriptions/Subscriptions";
 import UserLogin from "./Components/Login/Login";
 import LoginPage from "./Components/Login/LoginPage";

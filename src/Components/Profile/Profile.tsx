@@ -4,13 +4,18 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import './Profile.css';
 
 
+type propsType = {
+    profile: string
+    userName: string
+    description: string
+    status: string
+}
 
-
-function Profile(props: any) {
+function Profile(props: propsType) {
 
     return (
         <div className={'profile_main'}>
-            <ProfileInfo profile={props.profile} userName={props.userName} description={props.description}/>
+            <ProfileInfo profile={props.profile} userName={props.userName} status={props.status}/>
             <MyPostsContainer/>
         </div>
     );

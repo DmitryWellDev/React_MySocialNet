@@ -22,7 +22,6 @@ export const Subscriptions = () => {
     const Users = useSelector<RootStateType, any>((state) => {
         return state.usersPage.users
     })
-    console.log(Users)
 
     const followedUsers = Users.filter((el: userType) => {
        if (el.followed === true) {
@@ -35,7 +34,6 @@ export const Subscriptions = () => {
         <div>
             {
                 followedUsers.map((u: any) => <div key={u.id}>
-                        {console.log(u)}
                         <div className={styles.main_wrap}>
                             <div>
                                 <NavLink to={'/profile/' + u.id}>

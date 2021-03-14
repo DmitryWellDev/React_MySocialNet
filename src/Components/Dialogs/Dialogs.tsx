@@ -9,7 +9,7 @@ type DPropsType = {
     addMessage: (text: string) => void
     onMessageChange: (newText: string) => void
     dialogsPage: dialogsPageType
-    isAuth: boolean
+    // isAuth: boolean
 }
 
 
@@ -38,7 +38,7 @@ const Dialogs = (props: DPropsType) => {
     let UncheckedMessagesDataElement = props.dialogsPage.uncheckedMessages.map(message => <Message id={message.id}
                                                                                                    message={message.message}/>)
 
-    if (!props.isAuth) return <Redirect to={"/loginPage"}/>
+    // if (!props.isAuth) return <Redirect to={"/loginPage"}/>
 
     return (
         <div className={styles.dialogs}>

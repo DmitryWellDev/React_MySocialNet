@@ -1,16 +1,9 @@
 import React from 'react';
-import {RootStateType} from "../../redux/store";
 import Aside from "./Aside";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
+import {withSitebar} from "../../hoc/withSitebar";
 
-
-
-let mapStateToProps = (state: RootStateType) => {
-    return {
-        sitebar: state.sitebar
-    }
-}
 
 let mapDispatchToProps = (dispatch:Dispatch) => {
     return {
@@ -18,7 +11,8 @@ let mapDispatchToProps = (dispatch:Dispatch) => {
     }
 }
 
-const AsideContainer = connect(mapStateToProps, mapDispatchToProps)(Aside)
+let ComponentWithSitebar = withSitebar(Aside)
 
+const AsideContainer = connect(mapDispatchToProps)(ComponentWithSitebar)
 
  export default AsideContainer;

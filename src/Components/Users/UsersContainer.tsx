@@ -7,6 +7,7 @@ import {
 } from "../../redux/Users-Reducer";
 import {Users} from "./Users";
 import {Preloader} from "../Common/Preloader";
+import {setProfileStatus} from "../../redux/Profile-Reducer";
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -17,6 +18,7 @@ type UsersPropsType = {
     followingInProgress: Array<number>
     SetUsersTC: (currentPage: number, pageSize: number) => void
     GetUserPageTC: (pageNumber: number, pageSize: number) => void
+    setProfileStatus: (status: string) => void
 }
 
 //--------------------------------------------------------------------
@@ -38,7 +40,8 @@ class UsersContainerAPI extends React.Component<UsersPropsType> {
                    totalCount={this.props.totalCount}
                    currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
-                   followingInProgress={this.props.followingInProgress}/>
+                   followingInProgress={this.props.followingInProgress}
+                   setProfileStatus={this.props.setProfileStatus}/>
         </div>
     }
 }
@@ -57,7 +60,7 @@ let mapStateToProps = (state: any) => {
 
 
 const UsersContainer = connect(mapStateToProps,
-    {SetUsersTC, GetUserPageTC})
+    {SetUsersTC, GetUserPageTC, setProfileStatus})
 (UsersContainerAPI)
 
 export default UsersContainer;

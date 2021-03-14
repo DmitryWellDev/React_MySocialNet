@@ -102,7 +102,6 @@ const UsersReducer = (state: StateType = initialState, action: ActionsTypes): St
 }
 
 export const Follow = (userId: number) => {
-    console.log(userId)
     return {type: FOLLOW, userId, followed: true} as const
 }
 export const Unfollow = (userId: number) => {

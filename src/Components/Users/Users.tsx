@@ -13,6 +13,7 @@ type UsersPropsType = {
     currentPage: number
     onPageChanged: (p: number) => void
     followingInProgress: Array<number>
+    setProfileStatus: (status: string) => void
 }
 
 export const Users = (props: UsersPropsType) => {
@@ -33,13 +34,17 @@ export const Users = (props: UsersPropsType) => {
     let leftEdgeOfPortion = (portionNumber - 1) * grovingPort + 1
     let rightEdgeOfPortion = portionNumber * grovingPort
 
+    const setProfileStatusHandler = (status: string) => {
+        dispatch(props.setProfileStatus(status))
+    }
+
     return (
         <div className={styles.users_wrap}>
             <div className={styles.pageIndication_wrap}>
                 <div>
                     {portionNumber > 1 && <button onClick={() => {
                         setPortionNumber(portionNumber - 1)
-                    }}>prev</button>}
+                    }}>{`prev`}</button>}
                 </div>
                 <div>
                     {pages.filter((p) => {
@@ -56,19 +61,18 @@ export const Users = (props: UsersPropsType) => {
                 </div>
                 {portionCount > portionNumber && <button onClick={() => {
                     setPortionNumber(portionNumber + 1)
-                }}>next</button>}
+                }}>{`next`}</button>}
             </div>
             <div className={styles.itemsList_wrap}>
                 {
                     props.users.map((u: any) => <div key={u.id}>
-                        {console.log(u.followed)}
                         <div className={styles.main_wrap}>
 
                             <div>
-                                <NavLink to={'/profile/' + u.id}>
-                                    <img className={styles.item_image}
-                                         src={u.photos.small != null ? u.photos.small : userImage}/>
-                                </NavLink>
+                                    <NavLink to={'/profile/' + u.id} onClick={() => {setProfileStatusHandler(u.status)}}>
+                                        <img className={styles.item_image}
+                                             src={u.photos.small != null ? u.photos.small : userImage}/>
+                                    </NavLink>
                                 {/*//----------------------------------------------------------------------------------*/}
                                 {u.followed
                                     ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
@@ -82,7 +86,8 @@ export const Users = (props: UsersPropsType) => {
                             {/*//----------------------------------------------------------------------------------*/}
                             <div className={styles.dataList}>
                                 <div className={styles.dataItemNameStat_wrep}>
-                                    <NavLink to={'/profile/' + u.id} className={styles.dataItem_name}>
+                                    <NavLink to={'/profile/' + u.id} className={styles.dataItem_name}
+                                             onClick={() => {setProfileStatusHandler(u.status)}}>
                                         <div>{u.name}</div>
                                     </NavLink>
                                     <div className={styles.dataItem_status}>{u.status}</div>
