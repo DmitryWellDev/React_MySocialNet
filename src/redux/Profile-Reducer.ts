@@ -75,7 +75,6 @@ export const setDescription = (descriptionText: any) => {
 }
 
 export const setProfileStatus = (status: string) => {
-    console.log(status)
     return {type: SET_PROFILE_STATUS, status} as const
 }
 

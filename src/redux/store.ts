@@ -181,7 +181,7 @@ export let store: StoreType = {
 
 //=========================================
 
-
+console.log(store.getState());
 
 
 
